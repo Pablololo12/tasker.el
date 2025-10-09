@@ -71,8 +71,9 @@
   (cdr (assoc selection tasks)))
 
 (defun tasker-run-task-helper (command)
-  "Function that runs the command selcted"
-  (async-shell-command command))
+  "Run the command selected from the project root."
+  (let ((default-directory (projectile-project-root)))
+    (async-shell-command command)))
 
 ;; User Interface
 
